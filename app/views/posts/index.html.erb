@@ -3,10 +3,9 @@
   <%= form.text_field :content %>
   <%= form.submit '投稿する' , id: "submit" %>
 <% end %>
-
-<% @posts.each do |post| %>
-  <div class="post">
-    <div class="post-date">
+<% @posts.each do |post| %>  <%#7行目〜14行目がメモ部分のブロック%>
+  <div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>> <%#この部分をクリックするとイベント発火%><%#data-id＝メモのid、data-check＝既読の有無を管理するcheckedカラムの情報が入る%>
+    <div class="post-date">  <%#クリックされる部分の要素を取得するためにchecked.jsへ記述%>
       投稿日時：<%= post.created_at %>
     </div>
     <div class="post-content">
