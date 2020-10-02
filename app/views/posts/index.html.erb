@@ -1,11 +1,19 @@
 <h1>AjaxApp</h1>
 <%= form_with url: "/posts", method: :post,id: "form" do |form| %>
-  <%= form.text_field :content %>
+  <%= form.text_field :content  , id: "content"%> 
+  <%#contentを取得するため%>
   <%= form.submit '投稿する' , id: "submit" %>
 <% end %>
-<% @posts.each do |post| %>  <%#7行目〜14行目がメモ部分のブロック%>
-  <div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>> <%#この部分をクリックするとイベント発火%><%#data-id＝メモのid、data-check＝既読の有無を管理するcheckedカラムの情報が入る%>
-    <div class="post-date">  <%#クリックされる部分の要素を取得するためにchecked.jsへ記述%>
+
+<div id="list"> <%#投稿後にメモを追加する要素%>
+</div>
+
+<% @posts.each do |post| %>  <%#メモ部分のブロック%>
+  <div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>> 
+  <%#この部分をクリックするとイベント発火%>
+  <%#data-id＝メモのid、data-check＝既読の有無を管理するcheckedカラムの情報が入る%>
+    <div class="post-date">  
+    <%#クリックされる部分の要素を取得するためにchecked.jsへ記述%>
       投稿日時：<%= post.created_at %>
     </div>
     <div class="post-content">
